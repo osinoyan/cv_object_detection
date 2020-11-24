@@ -49,6 +49,23 @@ Decompress these two file *test.zip*, *train.tar.gz* and then make sure to place
     |   +- 1.png (from test.zip)
     |   +- ...
 ```
+Before starting training, be sure to convert the annotaion data by run the command below:
+```
+python SVHN_construct_datasets.py
+```
+It will create .txt file for each .png file - in the same directory and with the same name, but with .txt-extension. The file structure should now be like:
+```
+    data
+    +- obj
+    |   +- 1.png
+    |   +- 1.txt
+    |   +- 2.png
+    |   +- 2.txt
+    |   +- 3.png
+    |   +- 3.txt
+    |   +- ...
+    ...
+```
 
 ## Training
 The settings for custom digit objects are prepared in our repo, you can train the object detector following the instructions below if you have placed the files correctly following [Installation](#Installation).
@@ -73,3 +90,6 @@ After training, try using the detector to test the prepared testing  data. The r
 ```
 ./darknet detector test data/obj.data cfg/yolov4-obj.cfg backup/yolov4-obj_final.weights -ext_output -dont_show -out result.json < data/test.txt
 ```
+
+## Reference
+[Street-View-House-Numbers-SVHN-Detection-and-Classification-using-CNN](https://github.com/pavitrakumar78/Street-View-House-Numbers-SVHN-Detection-and-Classification-using-CNN/)
